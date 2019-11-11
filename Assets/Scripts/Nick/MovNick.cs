@@ -9,7 +9,7 @@ public class MovNick : MonoBehaviour
     [Range (0.1f,0.9f)]
     public float multSigilo = 0.5f;
     [Range (1.1f,2f)]
-    public float multVeloz = 1.7f;
+    public float multVeloz = 0.5f;
     float velocidad;
     
     void Update()

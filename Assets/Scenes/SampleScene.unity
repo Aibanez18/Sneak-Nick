@@ -983,7 +983,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191221993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 4.34, y: 5.88, z: -8.966797}
+  m_LocalPosition: {x: 0.88, y: -0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1139,6 +1139,11 @@ PrefabInstance:
     - target: {fileID: 1898878207339539916, guid: 4c0a3079eca0deb408848519f833e7e4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161129449519137924, guid: 4c0a3079eca0deb408848519f833e7e4,
+        type: 3}
+      propertyPath: detailedGizmos
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4779048926750585541, guid: 4c0a3079eca0deb408848519f833e7e4,
@@ -1715,7 +1720,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
+  logPathResults: 0
   maxNearestNodeDistance: 100
   scanOnStartup: 1
   fullGetNearestSearch: 0
@@ -1734,7 +1739,7 @@ MonoBehaviour:
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
-  maxFrameTime: 1
+  maxFrameTime: 10
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
@@ -1928,12 +1933,12 @@ PrefabInstance:
     - target: {fileID: 1898878207339539916, guid: 4c0a3079eca0deb408848519f833e7e4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.9659258
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1898878207339539916, guid: 4c0a3079eca0deb408848519f833e7e4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.2588191
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1898878207339539916, guid: 4c0a3079eca0deb408848519f833e7e4,
         type: 3}
@@ -1953,16 +1958,6 @@ PrefabInstance:
     - target: {fileID: 1898878207339539916, guid: 4c0a3079eca0deb408848519f833e7e4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 3604997283286810493, guid: 4c0a3079eca0deb408848519f833e7e4,
-        type: 3}
-      propertyPath: anguloVision
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2161129449519137924, guid: 4c0a3079eca0deb408848519f833e7e4,
-        type: 3}
-      propertyPath: startEndModifier.addPoints
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4779048926750585541, guid: 4c0a3079eca0deb408848519f833e7e4,
@@ -1980,24 +1975,7 @@ PrefabInstance:
       propertyPath: puntos.Array.data[1]
       value: 
       objectReference: {fileID: 1145112549}
-    - target: {fileID: 4682792432981083140, guid: 4c0a3079eca0deb408848519f833e7e4,
-        type: 3}
-      propertyPath: gravity.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4682792432981083140, guid: 4c0a3079eca0deb408848519f833e7e4,
-        type: 3}
-      propertyPath: gravity.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4682792432981083140, guid: 4c0a3079eca0deb408848519f833e7e4,
-        type: 3}
-      propertyPath: gravity.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6736095594296243028, guid: 4c0a3079eca0deb408848519f833e7e4, type: 3}
-    - {fileID: 2640572283789052378, guid: 4c0a3079eca0deb408848519f833e7e4, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c0a3079eca0deb408848519f833e7e4, type: 3}
 --- !u!1 &2127539952
 GameObject:
