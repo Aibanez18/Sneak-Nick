@@ -27,13 +27,21 @@ public class Puerta : MonoBehaviour
 			if (transform.eulerAngles.z < rotacionInicial + 90)
 			{
 				transform.RotateAround(posicionPivote, Vector3.forward, Time.deltaTime*velocidadRotacion);
+				if (transform.eulerAngles.z >= rotacionInicial + 90)
+				{
+					AstarPath.active.Scan();
+				}
 			}
 		}
 		else
 		{
-			if (transform.eulerAngles.z > rotacionInicial + 2 )
+			if (transform.eulerAngles.z > rotacionInicial + 3 )
 			{
 				transform.RotateAround(posicionPivote, -Vector3.forward, Time.deltaTime*velocidadRotacion);
+				if (transform.eulerAngles.z >= rotacionInicial + 3 )
+				{
+					AstarPath.active.Scan();
+				}
 			}
 		}
 	}

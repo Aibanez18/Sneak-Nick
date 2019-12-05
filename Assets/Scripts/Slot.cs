@@ -15,13 +15,12 @@ public class Slot : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         inventario = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventario>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (transform.childCount <= 0)

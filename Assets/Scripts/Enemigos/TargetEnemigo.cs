@@ -10,23 +10,79 @@ public class TargetEnemigo : MonoBehaviour
 
 	public List<Transform> puntos = new List<Transform>();
 	int contPuntos = 1;
-	Transform objetivo;
+	public Vector3 objetivo;
+	bool patrullando = true;
+	float tiempoEspera = 3f;
+	float tiempoRecalcular = 0f;
 
     void Start()
     {
 		cdv = GetComponent<CampoDeVisionEnemigo>();
 		ai = GetComponent<AIPath>();
-		objetivo = puntos[contPuntos];
-		ai.destination = objetivo.position;
+		objetivo = puntos[contPuntos].position;
+		objetivo.z = 0;
+		ai.destination = objetivo;
     }
 
     void Update()
     {
-		if (Vector3.Distance(transform.position, objetivo.position)<1f)
+		if (cdv.objetivosVisibles.Count>0)
 		{
-			CambiarObjetivo();
+			patrullando = false;
+			if (tiempoRecalcular<=0)
+			{
+				objetivo = cdv.objetivosVisibles[0].position;
+				objetivo.z = 0;
+				ai.destination = objetivo;
+				tiempoRecalcular += .5f;
+			}
+			else
+			{
+				tiempoRecalcular -= Time.deltaTime;
+			}
+			if (Vector3.Distance(transform.position, objetivo)<.5f)
+			{
+				if (tiempoEspera>=0)
+				{
+					transform.RotateAround(transform.position, Vector3.forward, Time.deltaTime*60);
+					tiempoEspera -= Time.deltaTime;
+				}
+				else
+				{
+					patrullando = true;
+					objetivo = puntos[contPuntos].position;
+					objetivo.z = 0;
+					ai.destination = objetivo;
+					tiempoEspera = 3f;
+				}
+			}
 		}
-    }
+		else
+		{
+			if (patrullando)
+			{
+				if (Vector3.Distance(transform.position, objetivo)<.5f)
+				{
+					patrullando = false;
+				}
+			}
+			else
+			{
+				if (tiempoEspera>=0)
+				{
+					transform.RotateAround(transform.position, Vector3.forward, Time.deltaTime*60);
+					tiempoEspera -= Time.deltaTime;
+				}
+				else
+				{
+					patrullando = true;
+					CambiarObjetivo();
+					tiempoEspera = 3f;
+				}
+			}
+		}
+	}
+
 
 	void CambiarObjetivo()
 	{
@@ -38,7 +94,8 @@ public class TargetEnemigo : MonoBehaviour
 		{
 			contPuntos = 0;
 		}
-		objetivo = puntos[contPuntos];
-		ai.destination = objetivo.position;
+		objetivo = puntos[contPuntos].position;
+		objetivo.z = 0;
+		ai.destination = objetivo;
 	}
 }

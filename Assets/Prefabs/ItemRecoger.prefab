@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 69801140347367582}
   - component: {fileID: 4898366030354818495}
   m_Layer: 0
-  m_Name: Item
+  m_Name: ItemRecoger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604779790119446986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.356, y: 5.362, z: -47.275894}
+  m_LocalPosition: {x: -2.356, y: 5.362, z: 0}
   m_LocalScale: {x: 1.5602441, y: 2.021136, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
