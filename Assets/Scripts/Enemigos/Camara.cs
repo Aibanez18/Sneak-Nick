@@ -66,7 +66,7 @@ public class Camara : MonoBehaviour
 				{
 					float tiempo = Time.deltaTime*velocidadRotacion;
 					transform.RotateAround(transform.position, sentido*Vector3.forward, tiempo);
-					rotacion += tiempo;
+					rotacion -= tiempo;
 				}
 				else
 				{

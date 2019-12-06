@@ -41,28 +41,28 @@ public class MovNick : MonoBehaviour
 		{
 			panelmapa.SetActive(false);
 		}
+	}
+
+    void FixedUpdate()
+    {
+        transform.Translate(direccion * velocidad * Time.deltaTime, Space.World);
 		if (direccion!= Vector3.zero)
 		{
 			if (velocidad == velocidadInicial)
 			{
-				if (Random.value<0.15f)
+				if (Random.value<0.02f)
 				{
-					Ruido(2);
+					Ruido(1);
 				}
 			}
 			else if (velocidad == velocidadInicial * multSigilo)
 			{
-				if (Random.value<0.5f)
+				if (Random.value<0.06f)
 				{
 					Ruido(2);
 				}
 			}
 		}
-    }
-
-    void FixedUpdate()
-    {
-        transform.Translate(direccion * velocidad * Time.deltaTime, Space.World);
     }
 
 	public void Ruido(int rango)
