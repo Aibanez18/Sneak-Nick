@@ -5,9 +5,10 @@ using UnityEngine;
 public class Puerta : MonoBehaviour
 {
 	bool abierto = false;
-	public float velocidadRotacion = 100f;
+	float velocidadRotacion = 100f;
 	Vector3 posicionPivote;
 	float rotacionInicial;
+	float rotacion;
 
 	void Start()
 	{
@@ -24,10 +25,12 @@ public class Puerta : MonoBehaviour
 	{
 		if (abierto)
 		{
-			if (transform.eulerAngles.z < rotacionInicial + 90)
+			if (rotacion < 90)
 			{
-				transform.RotateAround(posicionPivote, Vector3.forward, Time.deltaTime*velocidadRotacion);
-				if (transform.eulerAngles.z >= rotacionInicial + 90)
+				float tiempo = Time.deltaTime*velocidadRotacion;
+				transform.RotateAround(posicionPivote, Vector3.forward, tiempo);
+				rotacion += tiempo;
+				if (rotacion >= 90)
 				{
 					AstarPath.active.Scan();
 				}
@@ -35,10 +38,12 @@ public class Puerta : MonoBehaviour
 		}
 		else
 		{
-			if (transform.eulerAngles.z > rotacionInicial + 3 )
+			if (rotacion > 0)
 			{
-				transform.RotateAround(posicionPivote, -Vector3.forward, Time.deltaTime*velocidadRotacion);
-				if (transform.eulerAngles.z >= rotacionInicial + 3 )
+				float tiempo = Time.deltaTime*velocidadRotacion;
+				transform.RotateAround(posicionPivote, -Vector3.forward, tiempo);
+				rotacion -= tiempo;
+				if (rotacion <= 0)
 				{
 					AstarPath.active.Scan();
 				}

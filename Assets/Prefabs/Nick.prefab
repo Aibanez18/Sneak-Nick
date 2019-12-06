@@ -239,6 +239,7 @@ MonoBehaviour:
   velocidadInicial: 5
   multSigilo: 0.5
   multVeloz: 1.75
+  panelmapa: {fileID: 0}
 --- !u!114 &2015071066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c6edb7c2040d646b8470fc568313a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioVision: 8
+  radioVision: 10
   anguloVision: 120
   mascaraObjetivos:
     serializedVersion: 2

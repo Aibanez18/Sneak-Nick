@@ -28,34 +28,7 @@ public class TargetEnemigo : MonoBehaviour
     {
 		if (cdv.objetivosVisibles.Count>0)
 		{
-			patrullando = false;
-			if (tiempoRecalcular<=0)
-			{
-				objetivo = cdv.objetivosVisibles[0].position;
-				objetivo.z = 0;
-				ai.destination = objetivo;
-				tiempoRecalcular += .5f;
-			}
-			else
-			{
-				tiempoRecalcular -= Time.deltaTime;
-			}
-			if (Vector3.Distance(transform.position, objetivo)<.5f)
-			{
-				if (tiempoEspera>=0)
-				{
-					transform.RotateAround(transform.position, Vector3.forward, Time.deltaTime*60);
-					tiempoEspera -= Time.deltaTime;
-				}
-				else
-				{
-					patrullando = true;
-					objetivo = puntos[contPuntos].position;
-					objetivo.z = 0;
-					ai.destination = objetivo;
-					tiempoEspera = 3f;
-				}
-			}
+			Persecucion(cdv.objetivosVisibles[0].position);
 		}
 		else
 		{
@@ -97,5 +70,37 @@ public class TargetEnemigo : MonoBehaviour
 		objetivo = puntos[contPuntos].position;
 		objetivo.z = 0;
 		ai.destination = objetivo;
+	}
+
+	public void Persecucion(Vector3 posicion)
+	{
+		patrullando = false;
+		if (tiempoRecalcular<=0)
+		{
+			objetivo = posicion;
+			objetivo.z = 0;
+			ai.destination = objetivo;
+			tiempoRecalcular += .5f;
+		}
+		else
+		{
+			tiempoRecalcular -= Time.deltaTime;
+		}
+		if (Vector3.Distance(transform.position, objetivo)<.5f)
+		{
+			if (tiempoEspera>=0)
+			{
+				transform.RotateAround(transform.position, Vector3.forward, Time.deltaTime*60);
+				tiempoEspera -= Time.deltaTime;
+			}
+			else
+			{
+				patrullando = true;
+				objetivo = puntos[contPuntos].position;
+				objetivo.z = 0;
+				ai.destination = objetivo;
+				tiempoEspera = 3f;
+			}
+		}
 	}
 }

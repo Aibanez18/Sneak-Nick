@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class MovNick : MonoBehaviour
 {
+	public LayerMask mascaraObjetivos;
+
     Vector3 direccion;
     public float velocidadInicial = 5f;
     [Range (0.1f,0.9f)]
     public float multSigilo = 0.5f;
     [Range (1.1f,2f)]
-    public float multVeloz = 0.5f;
+    public float multVeloz = 1.5f;
     float velocidad;
+
+	public GameObject panelmapa;
     
     void Update()
     {
@@ -29,7 +33,31 @@ public class MovNick : MonoBehaviour
             velocidad = velocidadInicial;
         }
         
-        
+		if (Input.GetKey(KeyCode.M))
+		{
+			panelmapa.SetActive(true);
+		}
+		else
+		{
+			panelmapa.SetActive(false);
+		}
+		if (direccion!= Vector3.zero)
+		{
+			if (velocidad == velocidadInicial)
+			{
+				if (Random.value<0.15f)
+				{
+					Ruido(2);
+				}
+			}
+			else if (velocidad == velocidadInicial * multSigilo)
+			{
+				if (Random.value<0.5f)
+				{
+					Ruido(2);
+				}
+			}
+		}
     }
 
     void FixedUpdate()
@@ -37,21 +65,16 @@ public class MovNick : MonoBehaviour
         transform.Translate(direccion * velocidad * Time.deltaTime, Space.World);
     }
 
-    void detectarInput()
-    {
-        direccion.x = Input.GetAxis("Horizontal");
-        direccion.y = Input.GetAxis("Vertical");
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            velocidad = velocidadInicial * 0.7f;
-        }
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            velocidad = velocidadInicial * 1.3f;
-        }
-        else
-        {
-            velocidad = velocidadInicial;
-        }
-    }
+	public void Ruido(int rango)
+	{
+		Collider2D[] objetivosEnRango = Physics2D.OverlapCircleAll((Vector2)transform.position, rango, mascaraObjetivos);
+		for (int i = 0; i < objetivosEnRango.Length; i++)
+		{
+			if (objetivosEnRango[i].GetComponent<TargetEnemigo>() != null)
+			{
+				TargetEnemigo target = objetivosEnRango[i].GetComponent<TargetEnemigo>();
+				target.Persecucion(transform.position);
+			}
+		}
+	}
 }
