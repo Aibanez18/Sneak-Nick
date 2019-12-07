@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/NivelTutorial3 -copia.unity
+    guid: 35015e69ec5765740b1724c99ec73a4b
+  - enabled: 1
+    path: Assets/Scenes/NivelTutorial.unity
+    guid: 59c0c239884a103479d93cf5f4954a54
+  - enabled: 1
+    path: Assets/Scenes/NivelTutorial2 - copia.unity
+    guid: 5ac95a6ffe3c0c54687bc98b0ac59757
   m_configObjects: {}
