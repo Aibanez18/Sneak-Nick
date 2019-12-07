@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -25,8 +26,9 @@ public class Timer : MonoBehaviour
         Cronometro.text = Mathf.Round(Tiempos).ToString();
         if (Tiempos < 0)
         {
-            UnityEditor.EditorApplication.isPlaying = false;
-            Application.Quit();
+            SceneManager.LoadScene("GameOver");
+            //UnityEditor.EditorApplication.isPlaying = false;
+            //Application.Quit();
         }
 
 

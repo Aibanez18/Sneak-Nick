@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7479654808584300716}
   m_Layer: 10
   m_Name: Guardia
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
