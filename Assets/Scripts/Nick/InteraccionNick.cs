@@ -7,35 +7,55 @@ public class InteraccionNick : MonoBehaviour
 	bool interactuo = false;
 
 	public GameObject mensajeInteraccion;
-	public Puerta scriptPuerta;
+    public Puerta scriptP;
+    public Computador scriptC;
 
 	void OnTriggerEnter2D(Collider2D otro)
 	{
-		if (otro.CompareTag("Puerta"))
-		{
-			scriptPuerta = otro.GetComponent<Puerta>();
-		}
-		mensajeInteraccion.SetActive(true);
+        Reconocer(otro);
+        mensajeInteraccion.SetActive(true);
 		interactuo = false;
 	}
 
 	void OnTriggerStay2D(Collider2D otro)
 	{
-		if (otro.CompareTag("Puerta"))
-		{
-			if (Input.GetKey(KeyCode.E))
-			{
-				if (!interactuo)
-				{
-					scriptPuerta.cambiarEstado();
-					interactuo = true;
-				}
+        if (Input.GetKey(KeyCode.E))
+        {
+            Interactuar(otro);
+        }
+    }
 
-			}
-		}
-	}
+    private void Interactuar(Collider2D otro)
+    {
+        if (!interactuo)
+        {
+            if (otro.CompareTag("Computador"))
+            {
+                scriptC.apagarCamaras();
+                interactuo = true;
+                mensajeInteraccion.SetActive(false);
+            }
+            else if (otro.CompareTag("Puerta"))
+            {
+                scriptP.cambiarEstado();
+                interactuo = true;
+            }
+        }
+    }
 
-	void OnTriggerExit2D()
+    private void Reconocer(Collider2D otro)
+    {
+        if (otro.CompareTag("Puerta"))
+        {
+            scriptP = otro.GetComponent<Puerta>();
+        }
+        else if (otro.CompareTag("Computador"))
+        {
+            scriptC = otro.GetComponent<Computador>();
+        }
+    }
+
+    void OnTriggerExit2D()
 	{
 		mensajeInteraccion.SetActive(false);
 		interactuo = false;

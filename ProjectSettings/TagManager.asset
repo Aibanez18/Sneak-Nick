@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Puerta
+  - Enemigo
+  - PuertaCerrada
+  - Computador
   layers:
   - Default
   - TransparentFX

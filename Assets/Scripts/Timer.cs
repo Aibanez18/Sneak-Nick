@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Mensajes.Add("Acercate a las murallas,\n pueden haber puertas pero\n cuidado con los enemigos");
+        Mensajes.Add("Acercate a las murallas,\n pueden haber puertas secretas pero\n cuidado con los enemigos");
         Mensajes.Add("Hay items en las habitaciones\n pueden ser útiles");
         Mensajes.Add("Si te encuentran \n van a estar más alerta");
         Mensajes.Add("2Hay objetos en las habitaciones\n pueden ser útiles");
