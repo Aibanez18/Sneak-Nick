@@ -15,7 +15,7 @@ public class Computador : MonoBehaviour
             {
                 foreach (Camara camara in camaras)
                 {
-                    CampoDeVisionEnemigo vision = camara.GetComponent<CampoDeVisionEnemigo>();
+                    Camara vision = camara.GetComponent<Camara>();
                     vision.enabled = false;
                 }
                 uso -= 1;
